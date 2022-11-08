@@ -16,8 +16,10 @@ const Skills = () => {
       <Wrapper>
         <Skill>
           <Icon>as</Icon>
-          <Name>da</Name>
-          <Desc>ddfasdfsdfaa</Desc>
+          <Name>Development</Name>
+          <Desc>
+            Will create any type of website for your blog, portfolio, business.
+          </Desc>
           <Things>da,da,da,da</Things>
           <Tools>da,da,da,da</Tools>
         </Skill>
