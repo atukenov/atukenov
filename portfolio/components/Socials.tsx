@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaInstagram, FaPinterest } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaPinterest,
+  FaTiktok,
+} from "react-icons/fa";
 
 interface Props {
   containerStyles: string;
@@ -7,10 +13,11 @@ interface Props {
 }
 
 const socials = [
-  { icon: <FaGithub />, path: "" },
-  { icon: <FaLinkedin />, path: "" },
-  { icon: <FaInstagram />, path: "" },
-  { icon: <FaPinterest />, path: "" },
+  { icon: <FaGithub />, path: "https://github.com/atukenov" },
+  { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/atukenov/" },
+  { icon: <FaInstagram />, path: "https://www.instagram.com/amakenzi_" },
+  { icon: <FaPinterest />, path: "https://ru.pinterest.com/amakenzi_" },
+  { icon: <FaTiktok />, path: "https://www.tiktok.com/@amakenzi" },
 ];
 
 const Socials = ({ containerStyles, iconStyles }: Props) => {

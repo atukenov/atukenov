@@ -7,7 +7,7 @@ import Link from "next/link";
 const services = [
   {
     num: "01",
-    title: "Web Development",
+    title: "Fullstack Development",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
     href: "",
@@ -28,7 +28,7 @@ const services = [
   },
   {
     num: "04",
-    title: "SEO",
+    title: "Mobile Development",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
     href: "",

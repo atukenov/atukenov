@@ -7,15 +7,29 @@ import {
   FaReact,
   FaFigma,
   FaNodeJs,
+  FaAngular,
 } from "react-icons/fa";
 
-import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiDotnet,
+  SiCsharp,
+  SiMysql,
+  SiMongodb,
+  SiPython,
+  SiGit,
+  SiBootstrap,
+  SiAzuredevops,
+  SiAdobephotoshop,
+  SiAdobeillustrator,
+} from "react-icons/si";
 
 //about data
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non fuga eos ab a repellat odit obcaecati.",
+    "Passionate and results-driven Full-Stack Developer with over 5 years of experience in building and optimizing web applications.",
   info: [
     {
       fieldName: "Name",
@@ -27,10 +41,10 @@ const about = {
     },
     {
       fieldName: "Experience",
-      fieldValue: "12+ Years",
+      fieldValue: "7+ Years",
     },
     {
-      fieldName: "Skype",
+      fieldName: "Socials",
       fieldValue: "amakenzi_",
     },
     {
@@ -42,12 +56,12 @@ const about = {
       fieldValue: "almaz.t97@gmail.com",
     },
     {
-      fieldName: "Freelance",
-      fieldValue: "Available",
+      fieldName: "Languages",
+      fieldValue: "English, Russian",
     },
     {
-      fieldName: "Languages",
-      fieldValue: "English, Kazakh, Turkish, Russian",
+      fieldName: "Freelance",
+      fieldValue: "Available",
     },
   ],
 };
@@ -56,37 +70,27 @@ const about = {
 const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
-  description: "lorem ipsun",
+  description: "",
   items: [
     {
-      company: "Tech Solution Inc.",
-      posittion: "Full Stack Developer",
+      company: "Chevron Corp.",
+      posittion: "Lead Software Engineer",
       duration: "2022 - Present",
     },
     {
-      company: "Tengizchevroil",
-      posittion: "Front-end Developer",
+      company: "NCOC N.V",
+      posittion: "Full-Stack .Net/React",
       duration: "2021 - 2022",
     },
     {
-      company: "NCOC",
-      posittion: "Full Stack Developer",
-      duration: "2020 - 2021",
+      company: "Harmony Public Schools",
+      posittion: "Full-Stack NodeJS/React",
+      duration: "2019 - 2021",
     },
     {
-      company: "HPS",
-      posittion: "Full Stack Developer",
-      duration: "2019 - 2020",
-    },
-    {
-      company: "Suprex",
-      posittion: "Freelance",
-      duration: "2019 - 2020",
-    },
-    {
-      company: "NAU",
-      posittion: "Tutoring",
-      duration: "2015 - 2019",
+      company: "NCOC N.V",
+      posittion: "Full-Stack Developer",
+      duration: "2018 - 2019",
     },
   ],
 };
@@ -94,44 +98,24 @@ const experience = {
 const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
-  description: "lorem ipsund fdkalj dal dfjlkalhfa dfajskdjh hdfal",
+  description: "",
   items: [
     {
       institution: "North American University",
-      degree: "Software Engineer",
+      degree: "Bachelor, Computer Science",
       duration: "2015-2019",
     },
     {
-      institution: "Coursera",
-      degree: "Software Engineer",
-      duration: "2015-2019",
-    },
-    {
-      institution: "Codecademy",
-      degree: "Software Engineer",
-      duration: "2015-2019",
-    },
-    {
-      institution: "KTL",
-      degree: "Software Engineer",
+      institution: "Kazakh-Turkish High School",
+      degree: "High Education",
       duration: "2010-2015",
-    },
-    {
-      institution: "CTREX",
-      degree: "Azure",
-      duration: "2024",
-    },
-    {
-      institution: "CTREX",
-      degree: "Azure",
-      duration: "2023",
     },
   ],
 };
 
 const skills = {
   title: "My Skills",
-  description: "dfjlhskah fhdkhafl hfkdhsakfh kdfjlkah hjkd hfjdh hd  dahkfha",
+  description: "",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -162,8 +146,52 @@ const skills = {
       name: "node.js",
     },
     {
+      icon: <FaAngular />,
+      name: "angular",
+    },
+    {
+      icon: <SiDotnet />,
+      name: ".net",
+    },
+    {
+      icon: <SiCsharp />,
+      name: "c#",
+    },
+    {
+      icon: <SiMysql />,
+      name: "mysql",
+    },
+    {
+      icon: <SiMongodb />,
+      name: "mongodb",
+    },
+    {
+      icon: <SiPython />,
+      name: "python",
+    },
+    {
+      icon: <SiGit />,
+      name: "git",
+    },
+    {
+      icon: <SiBootstrap />,
+      name: "bootstrap",
+    },
+    {
+      icon: <SiAzuredevops />,
+      name: "azure",
+    },
+    {
       icon: <FaFigma />,
       name: "figma",
+    },
+    {
+      icon: <SiAdobephotoshop />,
+      name: "Photoshop",
+    },
+    {
+      icon: <SiAdobeillustrator />,
+      name: "Illustrator",
     },
   ],
 };
@@ -295,7 +323,6 @@ const Resume = () => {
                   })}
                 </ul>
               </div>
-              skills
             </TabsContent>
             {/* about */}
             <TabsContent

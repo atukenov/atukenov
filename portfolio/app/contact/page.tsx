@@ -58,8 +58,10 @@ const Contact = () => {
                 Lets work together
               </h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt excepturi cum iusto laboriosam!
+                I'm excited to collaborate on innovative projects and bring your
+                ideas to life. Whether you need a robust web application or a
+                dynamic digital solution, let's create something amazing
+                together. Get in touch to discuss how we can work together.
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -76,9 +78,12 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">FullStack</SelectItem>
-                    <SelectItem value="mst">UI/UX Design</SelectItem>
+                    <SelectItem value="fullstack">
+                      Full-Stack Development
+                    </SelectItem>
+                    <SelectItem value="logoDesign">Logo Design</SelectItem>
+                    <SelectItem value="uiux">UI/UX Design</SelectItem>
+                    <SelectItem value="mobile">Mobile Development</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

@@ -1,3 +1,6 @@
+"use client";
+
+import { saveAs } from "file-saver";
 import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
@@ -5,6 +8,16 @@ import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
+  const handleDownloadResume = () => {
+    const pdfUrl = `assets/resume/myresume.pdf`;
+    fetch(pdfUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        saveAs(blob, "AlmazResume.pdf");
+      })
+      .catch((error) => console.error("Error downloading the file: ", error));
+  };
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -24,6 +37,7 @@ const Home = () => {
                 variant="outline"
                 size="lg"
                 className="uppercase flex item-center gap-2"
+                onClick={handleDownloadResume}
               >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
