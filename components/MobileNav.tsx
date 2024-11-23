@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
+import BackgroundMusic from "./BackgroundMusic";
 
 const links = [
   {
@@ -42,22 +43,28 @@ const MobileNav = () => {
             </h1>
           </Link>
         </div>
-        <nav className="flex flex-col justify-center items-center gap-8">
-          {links.map((link, index) => {
-            return (
-              <Link
-                href={link.route}
-                key={index}
-                className={`${
-                  link.route === pathname &&
-                  "text-accent-default border-b-2 border-accent-default"
-                } text-xl capitalize hover:text-accent-default transition-all`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="flex flex-col content-center items-center">
+          <div className="mb-5">
+            <BackgroundMusic />
+          </div>
+
+          <nav className="flex flex-col justify-center items-center gap-8">
+            {links.map((link, index) => {
+              return (
+                <Link
+                  href={link.route}
+                  key={index}
+                  className={`${
+                    link.route === pathname &&
+                    "text-accent-default border-b-2 border-accent-default"
+                  } text-xl capitalize hover:text-accent-default transition-all`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
       </SheetContent>
     </Sheet>
   );

@@ -14,8 +14,6 @@ const Header = () => {
           </h1>
         </Link>
 
-        <BackgroundMusic />
-
         <div className="hidden xl:flex items-center gap-8">
           <Nav />
           <Link href="/contact">
