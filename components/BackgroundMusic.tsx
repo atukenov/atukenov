@@ -32,7 +32,10 @@ const BackgroundMusic = () => {
   const filledPercentage = volume * 100;
 
   return (
-    <div className="mr-8 flex items-center">
+    <div
+      className="mr-8 flex items-center fixed bottom-[50px] right-[50px] p-4 rounded-2xl"
+      style={{ boxShadow: "0px 4px 20px rgb(0 255 90 / 30%)" }}
+    >
       {/* Button to toggle play/pause */}
       <button
         onClick={togglePlayPause}

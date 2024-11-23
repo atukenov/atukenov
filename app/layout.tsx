@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import FullPageScroll from "@/components/FullPageScroll";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
+        <BackgroundMusic />
       </body>
     </html>
   );

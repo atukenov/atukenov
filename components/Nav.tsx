@@ -29,7 +29,6 @@ const Nav = () => {
 
   return (
     <div className="flex items-center">
-      <BackgroundMusic />
       <nav className="flex gap-8 items-center">
         {links.map((link, index) => {
           return (
