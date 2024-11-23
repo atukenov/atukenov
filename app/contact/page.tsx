@@ -16,6 +16,9 @@ import {
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
+import { motion } from "framer-motion";
+import { ChangeEvent, FormEvent, useState } from "react";
+
 const info = [
   {
     icon: <FaPhoneAlt />,
@@ -34,9 +37,48 @@ const info = [
   },
 ];
 
-import { motion } from "framer-motion";
+// Type for the form data
+interface FormData {
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
 
 const Contact = () => {
+  const [formData, setFormData] = useState<FormData>({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+
+  // Handle changes in input fields
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle changes in select field
+  const handleSelectChange = (value: string) => {
+    setFormData({ ...formData, service: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    const whatsappURL = `https://wa.me/77711770303?text=${encodeURIComponent(
+      `*Name:* ${formData.firstname} ${formData.lastname}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Service:* ${formData.service}\n*Message:* ${formData.message}`
+    )}`;
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -51,7 +93,7 @@ const Contact = () => {
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form
-              action=""
+              onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
               <h3 className="text-4xl text-accent-default">
@@ -65,13 +107,41 @@ const Contact = () => {
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone Number" />
+                <Input
+                  type="text"
+                  name="firstname"
+                  placeholder="Firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="lastname"
+                  placeholder="Lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  required
+                />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <Input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               {/* select */}
-              <Select>
+              <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -91,9 +161,13 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message here."
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
               />
               {/* btn */}
-              <Button size="md" className="max-w-40">
+              <Button size="md" className="max-w-40" type="submit">
                 Send message
               </Button>
             </form>
