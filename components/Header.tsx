@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
+import BackgroundMusic from "./BackgroundMusic";
 
 const Header = () => {
   return (
@@ -12,6 +13,8 @@ const Header = () => {
             AMAKENZI<span className="text-accent-default">_</span>
           </h1>
         </Link>
+
+        <BackgroundMusic />
 
         <div className="hidden xl:flex items-center gap-8">
           <Nav />

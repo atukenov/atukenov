@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import path from "path";
+import BackgroundMusic from "./BackgroundMusic";
 
 const links = [
   {
@@ -27,7 +28,7 @@ const Nav = () => {
   const pathName = usePathname();
 
   return (
-    <nav className="flex gap-8">
+    <nav className="flex gap-8 items-center">
       {links.map((link, index) => {
         return (
           <Link

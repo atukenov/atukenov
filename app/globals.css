@@ -21,4 +21,34 @@
   .text-outline-hover {
     -webkit-text-stroke: 1px #00ff99;
   }
+
+  .volume-slider {
+    -webkit-appearance: none; /* Remove default styling */
+    height: 8px; /* Track height */
+    background: #ddd; /* Track background color */
+    border-radius: 5px; /* Round the track corners */
+    outline: none; /* Remove focus outline */
+    transition: background-color 0.3s;
+  }
+
+  /* Change color of the track when hovered */
+  .volume-slider:hover {
+    background: #888; /* Darker track color */
+  }
+
+  /* Style the thumb (slider handle) */
+  .volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default thumb style */
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #00ff99; /* Thumb color */
+    border-radius: 50%; /* Round the thumb */
+    cursor: pointer; /* Change cursor to pointer */
+  }
+
+  /* Optional: Thumb hover effect */
+  .volume-slider::-webkit-slider-thumb:hover {
+    background: #00ff99; /* Slightly darker thumb color on hover */
+  }
 }
