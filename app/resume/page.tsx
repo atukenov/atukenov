@@ -61,7 +61,15 @@ const about = {
     },
     {
       fieldName: "Freelance",
-      fieldValue: "Available",
+      fieldValue: "Working",
+    },
+    {
+      fieldName: "Hobbies",
+      fieldValue: "Soccer⚽, Tennis🎾, Volleyball🏐",
+    },
+    {
+      fieldName: "Dreams",
+      fieldValue: "Traveling the world.🌍",
     },
   ],
 };
