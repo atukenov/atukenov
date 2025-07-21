@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { BsArrowUpRight, BsGithub } from "react-icons/bs";
 
@@ -15,44 +15,59 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import Link from "next/link";
-import Image from "next/image";
-import * as SwiperType from "swiper/types";
 import WorkSliderBtns from "@/components/WorkSliderBtns";
+import Image from "next/image";
+import Link from "next/link";
+import * as SwiperType from "swiper/types";
 
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "🎟️ Love Airlines",
+    title: "fullstack",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore voluptas sit unde, explicabo velit",
-    stack: [{ name: "Html 5" }, { name: "CSS 3" }, { name: "JavaScript" }],
+      "A flight ticket, coded for love — with check-in, and confetti on arrival. ✈️💙💻",
+    stack: [
+      { name: "Next.js 15" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+    ],
     image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
+    live: "https://ticket-topaz-two.vercel.app/",
+    github: "https://github.com/atukenov/atukenov",
   },
   {
     num: "02",
-    category: "fullstack",
-    title: "project 2",
+    category: "💎 DMD Project",
+    title: "fullstack",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore voluptas sit unde, explicabo velit",
-    stack: [{ name: "Next.JS" }, { name: "Tailwind CSS" }, { name: "NodeJS" }],
+      "A smart platform for local businesses in Atyrau — manage bookings, clients, payments (Kaspi), and notifications with ease. Simple, transparent, and sharp like a diamond ✨.",
+    stack: [
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "Node.js" },
+      { name: "MongoDB" },
+      { name: "Telegram API" },
+    ],
     image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
+    live: "https://dmd-project-ten.vercel.app/dashboard", // live site URL here
+    github: "https://github.com/atukenov/dmd-project", // GitHub repo URL here
   },
   {
     num: "03",
-    category: "frontend",
-    title: "project 3",
+    category: "Kezdesu 🤝📍",
+    title: "fullstack",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore voluptas sit unde, explicabo velit",
-    stack: [{ name: "Html 5" }, { name: "CSS 3" }],
+      "A friendly meet-up platform for people in Atyrau to connect, create events, and chat in groups 🧑‍🤝‍🧑✨. Built with clean UI and smooth mobile-first experience 📱.",
+    stack: [
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "Node.js" },
+      { name: "MongoDB" },
+    ],
     image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
+    live: "https://kezdesu-1y4q.vercel.app/", // your production link
+    github: "https://github.com/atukenov/kezdesu", // your GitHub repo
   },
 ];
 
