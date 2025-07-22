@@ -1,10 +1,10 @@
-import BackgroundMusic from "@/components/BackgroundMusic";
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import I18nProvider from "./I18nProvider";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -25,11 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jetbrainsMono.variable}>
-        {/* <FullPageScroll /> */}
-        <Header />
-        <StairTransition />
-        <PageTransition>{children}</PageTransition>
-        <BackgroundMusic />
+        <I18nProvider>
+          {/* <FullPageScroll /> */}
+          <Header />
+          <StairTransition />
+          <PageTransition>{children}</PageTransition>
+        </I18nProvider>
       </body>
     </html>
   );

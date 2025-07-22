@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import path from "path";
-import BackgroundMusic from "./BackgroundMusic";
+import { useTranslation } from "react-i18next";
 
 const links = [
   {
@@ -26,6 +25,7 @@ const links = [
 
 const Nav = () => {
   const pathName = usePathname();
+  const { t, i18n } = useTranslation("common");
 
   return (
     <div className="flex items-center">
@@ -40,7 +40,7 @@ const Nav = () => {
                 "text-accent-default border-b-2 border-accent-default"
               } capitalize font-medium hover:text-accent-default transition-all`}
             >
-              {link.name}
+              {t(link.name)}
             </Link>
           );
         })}

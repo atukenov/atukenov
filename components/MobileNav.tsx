@@ -1,9 +1,10 @@
 "use client";
-import { usePathname } from "next/navigation";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
-import BackgroundMusic from "./BackgroundMusic";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { CiMenuFries } from "react-icons/ci";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const links = [
   {
@@ -30,6 +31,14 @@ const links = [
 
 const MobileNav = () => {
   const pathname = usePathname();
+  const { t, i18n } = useTranslation("common");
+  const [lang, setLang] = useState(i18n.language);
+
+  const handleLanguageChange = (lng: string) => {
+    i18n.changeLanguage(lng);
+    setLang(lng);
+  };
+
   return (
     <Sheet>
       <SheetTrigger className="flex justify-center items-center">
@@ -59,6 +68,16 @@ const MobileNav = () => {
                 </Link>
               );
             })}
+            <div className="ml-4">
+              <select
+                value={lang}
+                onChange={(e) => handleLanguageChange(e.target.value)}
+                className="bg-gray-800 text-white px-2 py-1 rounded"
+              >
+                <option value="en">EN</option>
+                <option value="ru">RU</option>
+              </select>
+            </div>
           </nav>
         </div>
       </SheetContent>

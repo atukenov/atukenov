@@ -1,6 +1,7 @@
 "use client";
 
 import CountUp from "react-countup";
+import { useTranslation } from "react-i18next";
 
 const stats = [
   {
@@ -22,6 +23,7 @@ const stats = [
 ];
 
 const Stats = () => {
+  const { t, i18n } = useTranslation("common");
   return (
     <section className="pt-4 pb-6 xl:pt-0 xl:pb-6">
       <div className="container mx-auto">
@@ -43,7 +45,7 @@ const Stats = () => {
                     item.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"
                   } leading-snug text-white/80`}
                 >
-                  {item.text}
+                  {t(item.text)}
                 </p>
               </div>
             );
