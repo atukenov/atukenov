@@ -1,28 +1,28 @@
 "use client";
 
 import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaFigma,
-  FaNodeJs,
   FaAngular,
+  FaCss3,
+  FaFigma,
+  FaHtml5,
+  FaJs,
+  FaNodeJs,
+  FaReact,
 } from "react-icons/fa";
 
 import {
-  SiTailwindcss,
-  SiNextdotjs,
-  SiDotnet,
-  SiCsharp,
-  SiMysql,
-  SiMongodb,
-  SiPython,
-  SiGit,
-  SiBootstrap,
-  SiAzuredevops,
-  SiAdobephotoshop,
   SiAdobeillustrator,
+  SiAdobephotoshop,
+  SiAzuredevops,
+  SiBootstrap,
+  SiCsharp,
+  SiDotnet,
+  SiGit,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiPython,
+  SiTailwindcss,
 } from "react-icons/si";
 
 //about data
@@ -64,12 +64,24 @@ const about = {
       fieldValue: "Working",
     },
     {
-      fieldName: "Hobbies",
-      fieldValue: "Soccer⚽, Tennis🎾, Volleyball🏐",
+      fieldName: "Hobby 1",
+      fieldValue: "Soccer ⚽",
     },
     {
       fieldName: "Dreams",
-      fieldValue: "Traveling the world.🌍",
+      fieldValue: "Travel 🌍",
+    },
+    {
+      fieldName: "Hobby 2",
+      fieldValue: "Tennis 🎾",
+    },
+    {
+      fieldName: "",
+      fieldValue: "",
+    },
+    {
+      fieldName: "Hobby 3",
+      fieldValue: "Volleyball 🏐",
     },
   ],
 };
@@ -84,21 +96,46 @@ const experience = {
       company: "Chevron Corp.",
       posittion: "Lead Software Engineer",
       duration: "2022 - Present",
+      bullets: [
+        "Led a team of software engineers in the development and maintenance of full-stack applications for the oil and gas industry.",
+        "Developed robust and scalable solutions, encompassing front-end, back-end, and database components.",
+        "Collaborated closely with cross-functional teams, including business analysts and project managers, to gather requirements and define project scopes.",
+        "Contributed to the design, development, and testing of full-stack applications within the oil and gas sector, troubleshooting and debugging complex technical issues, ensuring smooth operation",
+        "Worked with the operations team to deploy applications to production environments, ensuring smooth operation and timely updates.",
+      ],
     },
     {
       company: "NCOC N.V",
       posittion: "Full-Stack .Net/React",
       duration: "2021 - 2022",
+      bullets: [
+        "Developed and maintained web applications for NCOC, a leading oil and gas company operating in the Atyrau region of Kazakhstan.",
+        "Work as a part of an agile development team, taking responsibility for organizing and planning their own work.",
+        "Implement, improve, and maintain back-end services/build, improve and maintain responsive front-ends/Develop online tools/features",
+        "Designing a modern highly responsive web-based user interface (Ant design, Bootstrap). Building reusable components and front-end libraries for future use.",
+        "Translating designs and wire-frames into high-quality code. Collaborate with the Business team to ensure the quality of test cases and the testing process.",
+      ],
     },
     {
       company: "Harmony Public Schools",
       posittion: "Full-Stack NodeJS/React",
       duration: "2019 - 2021",
+      bullets: [
+        "Developed and maintained web applications for Harmony Public School, a leading educational institution committed to providing high-quality education to students.",
+        "Utilized React.js to create interactive and responsive user interfaces, ensuring optimal user experience across different devices and browsers. Implemented back-end functionality using NodeJs, creating RESTful APIs to facilitate data retrieval and manipulation.",
+        "Integrated third-party APIs and services to extend the functionality of web applications and improve overall user experience.",
+        "Participated in code reviews, conducted thorough testing, and resolved bugs to deliver high-quality software.",
+        "Designed and optimized databases using SQL and NoSQL technologies, ensuring efficient data storage and retrieval.",
+      ],
     },
     {
       company: "NCOC N.V",
       posittion: "Full-Stack Developer",
       duration: "2018 - 2019",
+      bullets: [
+        "Developed back-end web applications using C# in Visual Studio and designed front-end UI using HTML, JSON, and AJAX. Project: Online Task Scheduler - helps project managers and team members to collaborate effectively with each other. Currently is being used in Eastern Europe Shell subsidy - NCOC.",
+        "Automated business operations on web applications using JavaScript in Sublime platform. Projects: (1) Drug testing – randomly selects 3 employees every week to test for alcohol. (2) Employee finder – finds which employee is in which building and room by accessing NCOC Database.",
+      ],
     },
   ],
 };
@@ -147,7 +184,7 @@ const skills = {
     },
     {
       icon: <SiTailwindcss />,
-      name: "tailwind.css",
+      name: "tailwind",
     },
     {
       icon: <FaNodeJs />,
@@ -204,6 +241,7 @@ const skills = {
   ],
 };
 
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -211,7 +249,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from "framer-motion";
 
 const Resume = () => {
@@ -245,24 +282,42 @@ const Resume = () => {
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                     {experience.description}
                   </p>
-                  <ScrollArea className="h-[400px]">
-                    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                  <ScrollArea className="h-[700px] pb-8">
+                    <ul className="grid grid-cols-1 lg:grid-cols-1 gap-[30px]">
                       {experience.items.map((item, index) => {
                         return (
                           <li
                             key={index}
-                            className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                            className="bg-[#232329] min-h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                           >
-                            <span className="text-accent-default">
-                              {item.duration}
-                            </span>
-                            <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            <div className="flex items-center justify-between w-full">
+                              <div className="flex items-center gap-3">
+                                {/* <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span> */}
+                                <p className="text-accent-default text-xl">
+                                  {item.company}
+                                </p>
+                              </div>
+                              <span className="text-accent-default">
+                                {item.duration}
+                              </span>
+                            </div>
+                            <h3 className="text-l max-w-[300px] min-h-[60px] text-center lg:text-left">
                               {item.posittion}
                             </h3>
-                            <div className="flex items-center gap-3">
-                              <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span>
-                              <p className="text-white/60">{item.company}</p>
-                            </div>
+                            {item.bullets &&
+                              item.bullets.map((bullet, bulletIndex) => {
+                                return (
+                                  <div
+                                    key={bulletIndex}
+                                    className="flex items-start gap-4"
+                                  >
+                                    {/* <span className="w-[6px] h-[6px] rounded-full bg-accent-default"></span> */}
+                                    <p className="text-white/60 text-[12px]">
+                                      • {bullet}
+                                    </p>
+                                  </div>
+                                );
+                              })}
                           </li>
                         );
                       })}
@@ -278,25 +333,27 @@ const Resume = () => {
                     {education.description}
                   </p>
                   <ScrollArea className="h-[400px]">
-                    <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
+                    <ul className="grid grid-cols-1 lg:grid-cols-1 gap-[30px]">
                       {education.items.map((item, index) => {
                         return (
                           <li
                             key={index}
-                            className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                            className="bg-[#232329] max-h-[150px]  md:py-6 md:px-10 py-4 px-4 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
                           >
-                            <span className="text-accent-default">
-                              {item.duration}
-                            </span>
-                            <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                            <div className="flex items-start justify-between w-full">
+                              <div className="flex items-center  gap-3">
+                                {/* <span className="w-[6px] h-[6px] rounded-full bg-accent-defaults"></span> */}
+                                <p className="text-white text-xl text-left">
+                                  {item.institution}
+                                </p>
+                              </div>
+                              <span className="text-accent-default min-w-[100px] text-right">
+                                {item.duration}
+                              </span>
+                            </div>
+                            <h3 className="text-white/60 max-w-[260px] max-h-[60px] text-center lg:text-left">
                               {item.degree}
                             </h3>
-                            <div className="flex items-center gap-3">
-                              <span className="w-[6px] h-[6px] rounded-full bg-accent-defaults"></span>
-                              <p className="text-white/60">
-                                {item.institution}
-                              </p>
-                            </div>
                           </li>
                         );
                       })}
@@ -320,8 +377,13 @@ const Resume = () => {
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
                               <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                                <div className="text-6xl group-hover:text-accent-default transition-all duration-300">
-                                  {skill.icon}
+                                <div className="flex flex-col items-center gap-2">
+                                  <div className="text-6xl group-hover:text-accent-default transition-all duration-300">
+                                    {skill.icon}
+                                  </div>
+                                  <div>
+                                    <p className="capitalize">{skill.name}</p>
+                                  </div>
                                 </div>
                               </TooltipTrigger>
                               <TooltipContent>

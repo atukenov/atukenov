@@ -1,36 +1,36 @@
 "use client";
 
-import { BsArrowDownRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { BsArrowDownRight } from "react-icons/bs";
 
 const services = [
   {
     num: "01",
     title: "Fullstack Development",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
+      "End-to-end web development covering both frontend interfaces and backend logic 🔄. From user interaction to database integration — everything built seamlessly.",
     href: "",
   },
   {
     num: "02",
     title: "UI/UX Design",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
+      "Designing intuitive, user-friendly interfaces with a focus on clarity, flow, and emotion 🎨✨. Every element is crafted to enhance the user’s experience and engagement.",
     href: "",
   },
   {
     num: "03",
     title: "Logo Design",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
+      "Crafting memorable, meaningful logos that visually capture a brand’s identity and purpose 🌀✍️. A strong mark that stays in people’s minds and fits across digital spaces.",
     href: "",
   },
   {
     num: "04",
     title: "Mobile Development",
     description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit, commodi illum veniam est hic quos dignissimos?",
+      "Building responsive, fast, and user-focused applications tailored for mobile devices 📱⚡. Ensuring smooth performance, intuitive navigation, and modern design on every screen.",
     href: "",
   },
 ];
