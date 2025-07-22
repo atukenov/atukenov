@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { FaPause, FaPlay, FaStop } from "react-icons/fa";
+import { useRef, useState } from "react";
+import { FaPause, FaPlay } from "react-icons/fa";
+import { IoMdRefresh } from "react-icons/io";
 
 const BackgroundMusic = () => {
   // State to track if music is playing or paused
@@ -21,6 +22,16 @@ const BackgroundMusic = () => {
     }
   };
 
+  const toggleRestart = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0; // Restart the music
+      if (!isPlaying) {
+        audioRef.current.play(); // Play the music if it was paused
+        setIsPlaying(true); // Update the state to playing
+      }
+    }
+  };
+
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume); // Update volume state
@@ -33,7 +44,7 @@ const BackgroundMusic = () => {
 
   return (
     <div
-      className="mr-8 flex items-center fixed bottom-[50px] right-[50px] p-4 rounded-2xl"
+      className="mb-2 md:mb-2 flex items-center p-4 rounded-2xl max-w-[270px] mx-auto"
       style={{ boxShadow: "0px 4px 20px rgb(0 255 90 / 30%)" }}
     >
       {/* Button to toggle play/pause */}
@@ -57,6 +68,13 @@ const BackgroundMusic = () => {
           background: `linear-gradient(to right, #00ff99 ${filledPercentage}%, #e0e0e0 ${filledPercentage}%)`, // Dynamic background color based on volume
         }}
       />
+
+      <button
+        onClick={toggleRestart}
+        className="text-accent-default px-4 py-2 rounded text-2xl"
+      >
+        {<IoMdRefresh />}
+      </button>
 
       {/* Audio element to play the background music */}
       <audio ref={audioRef} loop>
