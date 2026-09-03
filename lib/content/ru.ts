@@ -41,7 +41,7 @@ export const content: Content = {
         "Full-stack платформа для заказа кофе ☕ — гости оформляют самовывоз с телефона, а бариста ведут все заказы в реальном времени через десктоп-консоль. Обновления через SignalR, аналитика, оплаты и полная поддержка RU/EN/KK.",
       stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
       image: "/assets/work/altyncup.png",
-      live: "https://altyncup.vercel.app",
+      live: "https://www.altyncup.kz/",
       github: undefined,
     },
     {

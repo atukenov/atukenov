@@ -41,7 +41,7 @@ export const content: Content = {
         "A full-stack café ordering platform ☕ — customers order pickup from their phones while staff track and manage every order live from a desktop console. Real-time SignalR updates, analytics, payments, and full RU/EN/KK support.",
       stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
       image: "/assets/work/altyncup.png",
-      live: "https://altyncup.vercel.app",
+      live: "https://www.altyncup.kz/",
       // TODO(owner): set the real repo URL, or leave undefined to hide the GitHub button
       github: undefined,
     },
