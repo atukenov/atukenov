@@ -14,27 +14,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 
 import { motion } from "framer-motion";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-const info = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "+7 (771) 177-0303",
-  },
-  {
-    icon: <FaEnvelope />,
-    title: "Email",
-    description: "almaz.t97@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "Atyrau, KZ",
-  },
+const SERVICE_OPTIONS = [
+  { value: "fullstack", key: "Full-Stack Development" },
+  { value: "logoDesign", key: "Logo Design" },
+  { value: "uiux", key: "UI/UX Design" },
+  { value: "mobile", key: "Mobile Development" },
 ];
 
 // Type for the form data
@@ -48,6 +38,14 @@ interface FormData {
 }
 
 const Contact = () => {
+  const { t } = useTranslation("common");
+
+  const info = [
+    { icon: <FaPhoneAlt />, title: t("Phone"), description: "+7 (771) 177-0303" },
+    { icon: <FaEnvelope />, title: t("Email"), description: "almaz.t97@gmail.com" },
+    { icon: <FaMapMarkerAlt />, title: t("Address"), description: t("Atyrau, KZ") },
+  ];
+
   const [formData, setFormData] = useState<FormData>({
     firstname: "",
     lastname: "",
@@ -73,10 +71,14 @@ const Contact = () => {
   // Handle form submission
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const serviceLabel = SERVICE_OPTIONS.find(
+      (o) => o.value === formData.service
+    );
+    const service = serviceLabel ? t(serviceLabel.key) : formData.service;
     const whatsappURL = `https://wa.me/77711770303?text=${encodeURIComponent(
-      `*Name:* ${formData.firstname} ${formData.lastname}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Service:* ${formData.service}\n*Message:* ${formData.message}`
+      `*Name:* ${formData.firstname} ${formData.lastname}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Service:* ${service}\n*Message:* ${formData.message}`
     )}`;
-    window.open(whatsappURL, "_blank");
+    window.open(whatsappURL, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -97,20 +99,19 @@ const Contact = () => {
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
               <h3 className="text-4xl text-accent-default">
-                Lets work together
+                {t("Let's work together")}
               </h3>
               <p className="text-white/60">
-                I'm excited to collaborate on innovative projects and bring your
-                ideas to life. Whether you need a robust web application or a
-                dynamic digital solution, let's create something amazing
-                together. Get in touch to discuss how we can work together.
+                {t(
+                  "I'm excited to collaborate on innovative projects and bring your ideas to life. Whether you need a robust web application or a dynamic digital solution, let's create something amazing together. Get in touch to discuss how we can work together."
+                )}
               </p>
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   type="text"
                   name="firstname"
-                  placeholder="Firstname"
+                  placeholder={t("Firstname")}
                   value={formData.firstname}
                   onChange={handleChange}
                   required
@@ -118,7 +119,7 @@ const Contact = () => {
                 <Input
                   type="text"
                   name="lastname"
-                  placeholder="Lastname"
+                  placeholder={t("Lastname")}
                   value={formData.lastname}
                   onChange={handleChange}
                   required
@@ -126,7 +127,7 @@ const Contact = () => {
                 <Input
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("Email")}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -134,7 +135,7 @@ const Contact = () => {
                 <Input
                   type="text"
                   name="phone"
-                  placeholder="Phone Number"
+                  placeholder={t("Phone Number")}
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -143,24 +144,23 @@ const Contact = () => {
               {/* select */}
               <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select a service" />
+                  <SelectValue placeholder={t("Select a service")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="fullstack">
-                      Full-Stack Development
-                    </SelectItem>
-                    <SelectItem value="logoDesign">Logo Design</SelectItem>
-                    <SelectItem value="uiux">UI/UX Design</SelectItem>
-                    <SelectItem value="mobile">Mobile Development</SelectItem>
+                    <SelectLabel>{t("Select a service")}</SelectLabel>
+                    {SERVICE_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {t(option.key)}
+                      </SelectItem>
+                    ))}
                   </SelectGroup>
                 </SelectContent>
               </Select>
               {/* textarea */}
               <Textarea
                 className="h-[200px]"
-                placeholder="Type your message here."
+                placeholder={t("Type your message here.")}
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
@@ -168,7 +168,7 @@ const Contact = () => {
               />
               {/* btn */}
               <Button size="md" className="max-w-40" type="submit">
-                Send message
+                {t("Send message")}
               </Button>
             </form>
           </div>

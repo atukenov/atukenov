@@ -8,13 +8,20 @@ const resources = {
   ru: { common: ru },
 };
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: "en",
-  fallbackLng: "en",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+if (!i18n.isInitialized) {
+  i18n.use(initReactI18next).init({
+    resources,
+    // Keep "en" for SSR / first paint; I18nProvider switches on the client after mount.
+    lng: "en",
+    fallbackLng: "en",
+    defaultNS: "common",
+    interpolation: {
+      escapeValue: false,
+    },
+    react: {
+      useSuspense: false,
+    },
+  });
+}
 
 export default i18n;
