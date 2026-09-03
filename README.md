@@ -50,7 +50,7 @@ I'm a passionate and experienced software engineer with a proven history of lead
 
 ### 📫 Connect with me
 
-- 🌐 Website: [atukenov.com](https://www.atukenov.com)
+- 🌐 Website: [atukenov.kz](https://atukenov.kz)
 - 💼 LinkedIn: [linkedin.com/in/atukenov](https://www.linkedin.com/in/atukenov)
 - 💻 GitHub: [github.com/atukenov](https://github.com/atukenov)
 - 📬 Email: almaz.t97@gmail.com

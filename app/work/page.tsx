@@ -16,68 +16,19 @@ import {
 } from "@/components/ui/tooltip";
 
 import WorkSliderBtns from "@/components/WorkSliderBtns";
+import { getContent } from "@/lib/content";
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import * as SwiperType from "swiper/types";
 
-const projects = [
-  {
-    num: "01",
-    category: "🎟️ Love Airlines",
-    title: "fullstack",
-    description:
-      "A flight ticket, coded for love — with check-in, and confetti on arrival. ✈️💙💻",
-    stack: [
-      { name: "Next.js 15" },
-      { name: "TypeScript" },
-      { name: "Tailwind CSS" },
-    ],
-    image: "/assets/work/thumb1.png",
-    live: "https://ticket-topaz-two.vercel.app/",
-    github: "https://github.com/atukenov/atukenov",
-  },
-  {
-    num: "02",
-    category: "💎 DMD Project",
-    title: "fullstack",
-    description:
-      "A smart platform for local businesses in Atyrau — manage bookings, clients, payments (Kaspi), and notifications with ease. Simple, transparent, and sharp like a diamond ✨.",
-    stack: [
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-      { name: "Node.js" },
-      { name: "MongoDB" },
-      { name: "Telegram API" },
-    ],
-    image: "/assets/work/thumb2.png",
-    live: "https://dmd-project-ten.vercel.app/dashboard", // live site URL here
-    github: "https://github.com/atukenov/dmd-project", // GitHub repo URL here
-  },
-  {
-    num: "03",
-    category: "Kezdesu 🤝📍",
-    title: "fullstack",
-    description:
-      "A friendly meet-up platform for people in Atyrau to connect, create events, and chat in groups 🧑‍🤝‍🧑✨. Built with clean UI and smooth mobile-first experience 📱.",
-    stack: [
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-      { name: "Node.js" },
-      { name: "MongoDB" },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "https://kezdesu-1y4q.vercel.app/", // your production link
-    github: "https://github.com/atukenov/kezdesu", // your GitHub repo
-  },
-];
-
 const Work = () => {
-  const [project, setProject] = useState(projects[0]);
+  const { t, i18n } = useTranslation("common");
+  const { projects } = getContent(i18n.language);
+  const [index, setIndex] = useState(0);
+  const project = projects[index] ?? projects[0];
 
   const handleSlideChange = (swiper: SwiperType.Swiper) => {
-    const currentIndex = swiper.activeIndex;
-
-    setProject(projects[currentIndex]);
+    setIndex(swiper.activeIndex);
   };
 
   return (
@@ -107,12 +58,12 @@ const Work = () => {
               <p className="text-white/60">{project.description}</p>
 
               {/* stack */}
-              <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
+              <ul className="flex flex-wrap gap-4">
+                {project.stack.map((item, itemIndex) => {
                   return (
-                    <li key={index} className="text-xl text-accent-default">
-                      {item.name}
-                      {index !== project.stack.length - 1 && ","}
+                    <li key={itemIndex} className="text-xl text-accent-default">
+                      {item}
+                      {itemIndex !== project.stack.length - 1 && ","}
                     </li>
                   );
                 })}
@@ -123,31 +74,47 @@ const Work = () => {
               {/* buttons */}
               <div className="flex items-center gap-4">
                 {/* live project button */}
-                <Link href={project.live}>
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                      <TooltipTrigger
+                        className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group"
+                        aria-label={t("Live project")}
+                      >
                         <BsArrowUpRight className="text-white text-3xl group-hover:text-accent-default" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Live Projects</p>
+                        <p>{t("Live project")}</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Link>
+                </a>
                 {/* github project button */}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent-default" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger
+                          className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group"
+                          aria-label={t("Github repository")}
+                        >
+                          <BsGithub className="text-white text-3xl group-hover:text-accent-default" />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{t("Github repository")}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -158,19 +125,19 @@ const Work = () => {
               className="xl:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
             >
-              {projects.map((project, index) => {
+              {projects.map((item, itemIndex) => {
                 return (
-                  <SwiperSlide key={index} className="w-full">
+                  <SwiperSlide key={itemIndex} className="w-full">
                     <div className="h-[460px] relative group flex justify-center items-center bg-pink-50/20">
                       {/* overlay */}
                       <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                       {/* image */}
                       <div className="relative w-full h-full">
                         <Image
-                          src={project.image}
+                          src={item.image}
                           fill
                           className="object-cover"
-                          alt=""
+                          alt={item.category}
                         />
                       </div>
                     </div>
@@ -181,7 +148,7 @@ const Work = () => {
               {/* buttons */}
               <WorkSliderBtns
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-accent-default hover:bg-accent-default-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                btnStyles="bg-accent-default hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
               />
             </Swiper>
           </div>

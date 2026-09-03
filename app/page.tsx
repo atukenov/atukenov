@@ -1,25 +1,14 @@
 "use client";
 
-import BackgroundMusic from "@/components/BackgroundMusic";
 import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
 import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
-import { saveAs } from "file-saver";
 import { useTranslation } from "react-i18next";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
-  const { t, i18n } = useTranslation("common");
-  const handleDownloadResume = () => {
-    const pdfUrl = `assets/resume/myresume.pdf`;
-    fetch(pdfUrl)
-      .then((response) => response.blob())
-      .then((blob) => {
-        saveAs(blob, "AlmazResume.pdf");
-      })
-      .catch((error) => console.error("Error downloading the file: ", error));
-  };
+  const { t } = useTranslation("common");
 
   return (
     <section className="h-full">
@@ -38,13 +27,18 @@ const Home = () => {
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Button
+                asChild
                 variant="outline"
                 size="lg"
-                className="uppercase flex item-center gap-2"
-                onClick={handleDownloadResume}
+                className="uppercase flex items-center gap-2"
               >
-                <span>{t("Download CV")}</span>
-                <FiDownload className="text-xl" />
+                <a
+                  href="/assets/resume/myresume.pdf"
+                  download="AlmazTukenov-CV.pdf"
+                >
+                  <span>{t("Download CV")}</span>
+                  <FiDownload className="text-xl" />
+                </a>
               </Button>
               <div className="mb-8 xl:mb-0">
                 <Socials
@@ -60,7 +54,6 @@ const Home = () => {
         </div>
       </div>
       <Stats />
-      <BackgroundMusic />
     </section>
   );
 };

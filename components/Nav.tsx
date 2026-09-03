@@ -1,46 +1,28 @@
 "use client";
 
+import { navLinks } from "@/lib/nav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 
-const links = [
-  {
-    name: "home",
-    route: "/",
-  },
-  {
-    name: "services",
-    route: "/services",
-  },
-  {
-    name: "resume",
-    route: "/resume",
-  },
-  {
-    name: "work",
-    route: "/work",
-  },
-];
-
 const Nav = () => {
   const pathName = usePathname();
-  const { t, i18n } = useTranslation("common");
+  const { t } = useTranslation("common");
 
   return (
     <div className="flex items-center">
       <nav className="flex gap-8 items-center">
-        {links.map((link, index) => {
+        {navLinks.map((link) => {
           return (
             <Link
               href={link.route}
-              key={index}
+              key={link.route}
               className={`${
                 link.route === pathName &&
                 "text-accent-default border-b-2 border-accent-default"
               } capitalize font-medium hover:text-accent-default transition-all`}
             >
-              {t(link.name)}
+              {t(link.key)}
             </Link>
           );
         })}
