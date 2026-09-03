@@ -35,6 +35,18 @@ export const content: Content = {
   projects: [
     {
       num: "01",
+      category: "☕ AltynCup",
+      title: "fullstack",
+      description:
+        "A full-stack café ordering platform ☕ — customers order pickup from their phones while staff track and manage every order live from a desktop console. Real-time SignalR updates, analytics, payments, and full RU/EN/KK support.",
+      stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
+      image: "/assets/work/altyncup.png",
+      live: "https://www.altyncup.kz/",
+      // TODO(owner): set the real repo URL, or leave undefined to hide the GitHub button
+      github: undefined,
+    },
+    {
+      num: "02",
       category: "🎟️ Love Airlines",
       title: "fullstack",
       description:
@@ -46,7 +58,7 @@ export const content: Content = {
       github: undefined,
     },
     {
-      num: "02",
+      num: "03",
       category: "💎 DMD Project",
       title: "fullstack",
       description:
@@ -57,7 +69,7 @@ export const content: Content = {
       github: "https://github.com/atukenov/dmd-project",
     },
     {
-      num: "03",
+      num: "04",
       category: "Kezdesu 🤝📍",
       title: "fullstack",
       description:
