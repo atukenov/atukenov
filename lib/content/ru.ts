@@ -35,6 +35,17 @@ export const content: Content = {
   projects: [
     {
       num: "01",
+      category: "☕ AltynCup",
+      title: "fullstack",
+      description:
+        "Full-stack платформа для заказа кофе ☕ — гости оформляют самовывоз с телефона, а бариста ведут все заказы в реальном времени через десктоп-консоль. Обновления через SignalR, аналитика, оплаты и полная поддержка RU/EN/KK.",
+      stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
+      image: "/assets/work/altyncup.png",
+      live: "https://altyncup.vercel.app",
+      github: undefined,
+    },
+    {
+      num: "02",
       category: "🎟️ Love Airlines",
       title: "fullstack",
       description:
@@ -45,7 +56,7 @@ export const content: Content = {
       github: undefined,
     },
     {
-      num: "02",
+      num: "03",
       category: "💎 DMD Project",
       title: "fullstack",
       description:
@@ -56,7 +67,7 @@ export const content: Content = {
       github: "https://github.com/atukenov/dmd-project",
     },
     {
-      num: "03",
+      num: "04",
       category: "Kezdesu 🤝📍",
       title: "fullstack",
       description:
