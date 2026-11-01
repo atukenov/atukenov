@@ -28,8 +28,7 @@ export const heroMedia = {
   videoPoster: "/assets/cyber/intro-poster.jpg" as string | null,
 
   /** 3D model in .glb (binary glTF). Rotatable, auto-spins. */
-  model: null as string | null,
-  // model: "/assets/cyber/avatar.glb",
+  model: "/assets/cyber/avatar.glb" as string | null,
 
   /** Which tab opens first (falls back to the first slot that has a file). */
   defaultView: "portrait" as HeroView,
