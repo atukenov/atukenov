@@ -15,15 +15,17 @@ export type HeroView = "portrait" | "video" | "model";
 
 export const heroMedia = {
   /** Still image. PNG with transparent background looks best. */
-  portrait: "/assets/IMG_1983.png" as string | null,
-  // portrait: "/assets/cyber/portrait.png",
+  portrait: "/assets/cyber/portrait.webp" as string | null,
+  /**
+   * "cover"   = fill the frame (for a full illustration with its own background)
+   * "contain" = fit inside the frame (for a cut-out PNG with transparency)
+   */
+  portraitFit: "cover" as "cover" | "contain",
 
   /** Short looping clip: MP4 (H.264) and/or WebM. Plays muted. */
-  video: null as string | null,
-  // video: "/assets/cyber/intro.mp4",
+  video: "/assets/cyber/intro.mp4" as string | null,
   /** Optional still shown before the video loads. */
-  videoPoster: null as string | null,
-  // videoPoster: "/assets/cyber/intro-poster.jpg",
+  videoPoster: "/assets/cyber/intro-poster.jpg" as string | null,
 
   /** 3D model in .glb (binary glTF). Rotatable, auto-spins. */
   model: null as string | null,

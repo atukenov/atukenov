@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import ModelViewer from "./ModelViewer";
 
 const SLOTS: { view: HeroView; label: string; file: string | null; hint: string }[] = [
-  { view: "portrait", label: "IMG", file: heroMedia.portrait, hint: "portrait.png" },
+  { view: "portrait", label: "IMG", file: heroMedia.portrait, hint: "portrait.webp" },
   { view: "video", label: "VID", file: heroMedia.video, hint: "intro.mp4" },
   { view: "model", label: "3D", file: heroMedia.model, hint: "avatar.glb" },
 ];
@@ -81,7 +81,9 @@ const HeroMedia = () => {
 
               {active?.view === "portrait" && active.file && (
                 <>
-                  <div className="absolute inset-0 bg-cyber-grid" />
+                  {heroMedia.portraitFit === "contain" && (
+                    <div className="absolute inset-0 bg-cyber-grid" />
+                  )}
                   <Image
                     src={active.file}
                     priority
@@ -89,7 +91,11 @@ const HeroMedia = () => {
                     fill
                     sizes="(min-width: 1200px) 480px, 300px"
                     alt="Almaz Tukenov"
-                    className="object-contain object-bottom cyber-portrait"
+                    className={
+                      heroMedia.portraitFit === "contain"
+                        ? "object-contain object-bottom cyber-portrait"
+                        : "object-cover object-top"
+                    }
                   />
                 </>
               )}
