@@ -90,7 +90,7 @@ const Resume = () => {
               {/* experience */}
               <TabsContent value="experience" className="w-full">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{experience.title}</h3>
+                  <h3 className="h2 text-accent-default glow-yellow">{experience.title}</h3>
                   {experience.description && (
                     <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                       {experience.description}
@@ -102,15 +102,15 @@ const Resume = () => {
                         return (
                           <li
                             key={index}
-                            className="bg-[#232329] min-h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                            className="cyber-panel min-h-[184px] py-6 px-10 flex flex-col justify-center items-center lg:items-start gap-1"
                           >
                             <div className="flex items-center justify-between w-full">
                               <div className="flex items-center gap-3">
-                                <p className="text-accent-default text-xl">
+                                <p className="font-display uppercase tracking-wider text-accent-default text-xl">
                                   {item.company}
                                 </p>
                               </div>
-                              <span className="text-accent-default">
+                              <span className="hud-label text-neon-cyan">
                                 {item.duration}
                               </span>
                             </div>
@@ -125,7 +125,7 @@ const Resume = () => {
                                     className="flex items-start gap-4"
                                   >
                                     <p className="text-white/60 text-[12px]">
-                                      • {bullet}
+                                      <span className="text-neon-magenta">▸</span> {bullet}
                                     </p>
                                   </div>
                                 );
@@ -140,7 +140,7 @@ const Resume = () => {
               {/* education */}
               <TabsContent value="education" className="w-full">
                 <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                  <h3 className="text-4xl font-bold">{education.title}</h3>
+                  <h3 className="h2 text-accent-default glow-yellow">{education.title}</h3>
                   {education.description && (
                     <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                       {education.description}
@@ -152,15 +152,15 @@ const Resume = () => {
                         return (
                           <li
                             key={index}
-                            className="bg-[#232329] max-h-[150px]  md:py-6 md:px-10 py-4 px-4 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
+                            className="cyber-panel max-h-[150px]  md:py-6 md:px-10 py-4 px-4 flex flex-col justify-center items-center lg:items-start gap-1"
                           >
                             <div className="flex items-start justify-between w-full">
                               <div className="flex items-center  gap-3">
-                                <p className="text-white text-xl text-left">
+                                <p className="font-display uppercase tracking-wider text-accent-default text-xl text-left">
                                   {item.institution}
                                 </p>
                               </div>
-                              <span className="text-accent-default min-w-[100px] text-right">
+                              <span className="hud-label text-neon-cyan min-w-[100px] text-right">
                                 {item.duration}
                               </span>
                             </div>
@@ -178,7 +178,7 @@ const Resume = () => {
               <TabsContent value="skills" className="w-full h-full">
                 <div className="flex flex-col gap-[30px]">
                   <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                    <h3 className="text-4xl font-bold">{t("My Skills")}</h3>
+                    <h3 className="h2 text-accent-default glow-yellow">{t("My Skills")}</h3>
                   </div>
                   <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
                     {skillList.map((skill, index) => {
@@ -186,13 +186,13 @@ const Resume = () => {
                         <li key={index}>
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
-                              <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <TooltipTrigger className="cyber-panel w-full h-[150px] flex justify-center items-center group hover:shadow-[inset_0_0_0_1px_#00f0ff] transition-all">
                                 <div className="flex flex-col items-center gap-2">
-                                  <div className="text-6xl group-hover:text-accent-default transition-all duration-300">
+                                  <div className="text-6xl text-white/80 group-hover:text-accent-default group-hover:drop-shadow-[0_0_12px_#f3e600] transition-all duration-300">
                                     {skill.icon}
                                   </div>
                                   <div>
-                                    <p className="capitalize">{skill.name}</p>
+                                    <p className="hud-label">{skill.name}</p>
                                   </div>
                                 </div>
                               </TooltipTrigger>
@@ -213,7 +213,7 @@ const Resume = () => {
                 className="w-full text-center xl:text-left"
               >
                 <div className="flex flex-col gap-[30px]">
-                  <h3 className="text-4xl font-bold">{about.title}</h3>
+                  <h3 className="h2 text-accent-default glow-yellow">{about.title}</h3>
                   <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                     {about.description}
                   </p>
@@ -224,8 +224,8 @@ const Resume = () => {
                           key={index}
                           className="flex items-center justify-center xl:justify-start gap-4"
                         >
-                          <span className="text-white/60">{item.fieldName}</span>
-                          <span className="text-xl">{item.fieldValue}</span>
+                          <span className="hud-label">{item.fieldName}</span>
+                          <span className="text-lg text-white">{item.fieldValue}</span>
                         </li>
                       );
                     })}

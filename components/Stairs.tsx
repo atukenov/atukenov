@@ -18,6 +18,16 @@ const reverseIndex = (index: number) => {
   return totalSteps - index - 1;
 };
 
+// neon bars wipe the screen between routes
+const barColors = [
+  "bg-accent-default",
+  "bg-neon-cyan",
+  "bg-accent-default",
+  "bg-neon-magenta",
+  "bg-accent-default",
+  "bg-neon-cyan",
+];
+
 const Stairs = () => {
   return (
     <>
@@ -34,7 +44,7 @@ const Stairs = () => {
               ease: "easeInOut",
               delay: reverseIndex(index) * 0.1,
             }}
-            className="h-full w-full bg-white relative"
+            className={`h-full w-full relative ${barColors[index]}`}
           />
         );
       })}

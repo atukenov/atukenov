@@ -18,10 +18,14 @@ const Nav = () => {
               href={link.route}
               key={link.route}
               className={`${
-                link.route === pathName &&
-                "text-accent-default border-b-2 border-accent-default"
-              } capitalize font-medium hover:text-accent-default transition-all`}
+                link.route === pathName
+                  ? "text-accent-default glow-yellow"
+                  : "text-white/80"
+              } font-display uppercase tracking-[0.2em] text-sm hover:text-neon-cyan transition-all`}
             >
+              <span className="text-neon-magenta/80 mr-1">
+                {link.route === pathName ? "▸" : "/"}
+              </span>
               {t(link.key)}
             </Link>
           );

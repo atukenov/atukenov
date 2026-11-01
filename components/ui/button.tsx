@@ -5,14 +5,16 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-semibold ring-offset-white transitions-colors",
+  "inline-flex items-center justify-center whitespace-nowrap clip-corner font-display uppercase tracking-[0.15em] text-base font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan",
   {
     variants: {
       variant: {
-        default: "bg-accent-default text-primary hover:bg-accent-hover",
+        default:
+          "bg-accent-default text-primary hover:bg-neon-cyan hover:shadow-neon-cyan",
         primary: "bg-primary text-white",
+        // square outline (a clip-path would cut the border at the corners)
         outline:
-          "border border-accent-default bg-transparent text-accent-default hover:bg-accent-default hover:text-primary",
+          "[clip-path:none] border-2 border-accent-default bg-transparent text-accent-default hover:bg-accent-default hover:text-primary hover:shadow-neon-yellow",
       },
       size: {
         default: "h-[44px] px-6",

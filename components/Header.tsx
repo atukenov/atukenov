@@ -4,18 +4,25 @@ import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileNav from "./MobileNav";
 import Nav from "./Nav";
+import GlitchText from "./cyber/GlitchText";
 import { Button } from "./ui/button";
 
 const Header = () => {
   const { t } = useTranslation("common");
 
   return (
-    <header className="py-8 xl:py-12 text-white">
+    <header className="relative py-8 xl:py-12 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/">
-          <h1 className="text-4xl font-semibold">
-            AMAKENZI<span className="text-accent-default">_</span>
-          </h1>
+        <Link href="/" className="group flex items-baseline gap-1" aria-label="Home">
+          <GlitchText
+            text="AMAKENZI"
+            hoverOnly
+            className="font-display text-3xl xl:text-4xl font-bold tracking-wider"
+          />
+          <span className="font-display text-3xl xl:text-4xl text-accent-default glow-yellow animate-blink">
+            _
+          </span>
+          <span className="hidden xl:inline hud-label ml-2 self-center">v2.077</span>
         </Link>
 
         <div className="hidden xl:flex items-center gap-8">
