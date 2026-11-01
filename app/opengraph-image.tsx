@@ -17,14 +17,17 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          backgroundColor: "#1c1c22",
+          backgroundColor: "#07070d",
+          backgroundImage:
+            "radial-gradient(ellipse at 0% 0%, rgba(255,42,109,0.35), transparent 55%), radial-gradient(ellipse at 100% 100%, rgba(0,240,255,0.25), transparent 55%)",
+          borderLeft: "12px solid #f3e600",
           fontFamily: "monospace",
         }}
       >
         <div
           style={{
             fontSize: 30,
-            color: "#00ff99",
+            color: "#00f0ff",
             letterSpacing: 4,
           }}
         >
@@ -35,7 +38,8 @@ export default function OpengraphImage() {
             marginTop: 24,
             fontSize: 76,
             fontWeight: 700,
-            color: "#ffffff",
+            color: "#f3e600",
+            textTransform: "uppercase",
             lineHeight: 1.1,
           }}
         >
@@ -54,7 +58,7 @@ export default function OpengraphImage() {
           style={{
             marginTop: 40,
             fontSize: 26,
-            color: "#00ff99",
+            color: "#ff2a6d",
           }}
         >
           React · Node.js · .NET · Next.js

@@ -32,18 +32,18 @@ const Stats = () => {
             return (
               <div
                 key={index}
-                className="flex-1 flex gap-4 items-center justify-center xl:justify-start"
+                className="cyber-panel flex-1 flex gap-4 items-center justify-center xl:justify-start px-6 py-4 min-w-[220px]"
               >
                 <CountUp
                   end={item.num}
                   duration={5}
                   delay={2}
-                  className="text-4xl xl:text-6xl font-extrabold"
+                  className="font-display text-4xl xl:text-5xl font-bold text-accent-default glow-yellow"
                 />
                 <p
                   className={`${
                     item.text.length < 15 ? "max-w-[100px]" : "max-w-[150px]"
-                  } leading-snug text-white/80`}
+                  } leading-snug text-white/70 text-sm uppercase tracking-wider`}
                 >
                   {t(item.text)}
                 </p>

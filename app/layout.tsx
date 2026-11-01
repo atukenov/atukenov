@@ -2,14 +2,23 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import CyberOverlay from "@/components/cyber/CyberOverlay";
+import StatusBar from "@/components/cyber/StatusBar";
+import { Tektur, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import I18nProvider from "./I18nProvider";
 
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-jetbrainsMono",
+});
+
+// Angular, techy display face for headings and HUD numbers
+// (Tektur ships Cyrillic, so the RU locale keeps the same look)
+const display = Tektur({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-display",
 });
 
 const SITE_URL = "https://atukenov.kz";
@@ -63,11 +72,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={jetbrainsMono.variable}>
+      <body className={`${jetbrainsMono.variable} ${display.variable}`}>
         <I18nProvider>
           <Header />
           <StairTransition />
           <PageTransition>{children}</PageTransition>
+          <StatusBar />
+          <CyberOverlay />
         </I18nProvider>
       </body>
     </html>
