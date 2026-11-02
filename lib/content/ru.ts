@@ -38,9 +38,9 @@ export const content: Content = {
       category: "☕ AltynCup",
       title: "fullstack",
       description:
-        "Full-stack платформа для заказа кофе ☕ — гости оформляют самовывоз с телефона, а бариста ведут все заказы в реальном времени через десктоп-консоль. Обновления через SignalR, аналитика, оплаты и полная поддержка RU/EN/KK.",
-      stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
-      image: "/assets/work/altyncup.png",
+        "Full-stack платформа для заказа кофе ☕ — веб-приложение и нативные приложения для iOS/Android. Гости оформляют самовывоз, оплачивают онлайн, собирают групповые заказы и получают бейджи лояльности, а бариста ведут все заказы в реальном времени через админ-консоль. SignalR, push-уведомления, аналитика и полная поддержка RU/EN/KK.",
+      stack: [".NET 10", "Angular 21", "Capacitor", "SignalR", "PostgreSQL", "Firebase", "Tailwind CSS"],
+      image: "/assets/work/altyncup-cup.png",
       live: "https://www.altyncup.kz/",
       github: undefined,
     },

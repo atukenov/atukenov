@@ -38,9 +38,9 @@ export const content: Content = {
       category: "☕ AltynCup",
       title: "fullstack",
       description:
-        "A full-stack café ordering platform ☕ — customers order pickup from their phones while staff track and manage every order live from a desktop console. Real-time SignalR updates, analytics, payments, and full RU/EN/KK support.",
-      stack: [".NET 10", "Angular 17", "SignalR", "SQL Server", "Tailwind CSS"],
-      image: "/assets/work/altyncup.png",
+        "A full-stack café ordering platform ☕ with a web app and native iOS/Android apps. Guests order pickup, pay online, split group orders and earn loyalty badges, while baristas run every order live from an admin console. Real-time SignalR updates, push notifications, analytics and full RU/EN/KK support.",
+      stack: [".NET 10", "Angular 21", "Capacitor", "SignalR", "PostgreSQL", "Firebase", "Tailwind CSS"],
+      image: "/assets/work/altyncup-cup.png",
       live: "https://www.altyncup.kz/",
       // TODO(owner): set the real repo URL, or leave undefined to hide the GitHub button
       github: undefined,
