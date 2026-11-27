@@ -9,7 +9,7 @@ import { useSyncExternalStore } from "react";
  */
 
 /** Where the camera is looking. */
-export type Focus = "overview" | "monitor" | "folders" | "pc";
+export type Focus = "overview" | "monitor" | "folders" | "pc" | "shelf";
 
 /** What the side panel shows (null = closed). */
 export type Panel =
@@ -42,6 +42,9 @@ export type DeskState = {
   calendarPage: number;
   /** bumps when the soccer ball is kicked */
   ballKick: number;
+  /** bumps on every camera move request, so "reset" works even when the
+      focus did not change (e.g. after the visitor dragged the view) */
+  camTick: number;
 };
 
 const initial: DeskState = {
@@ -57,6 +60,7 @@ const initial: DeskState = {
   keyPulse: 0,
   calendarPage: 0,
   ballKick: 0,
+  camTick: 0,
 };
 
 let state: DeskState = initial;
@@ -114,26 +118,30 @@ export const deskActions = {
     deskActions.ensureOn();
     // On small screens the monitor is too small to read, so the same
     // content opens in the panel instead.
-    deskStore.set({
+    deskStore.set((s) => ({
       focus: "monitor",
       panel: compact ? { kind: "about" } : null,
       interacted: true,
-    });
+      camTick: s.camTick + 1,
+    }));
   },
   openProject(index: number) {
-    deskStore.set({ focus: "folders", panel: { kind: "project", index }, interacted: true });
+    deskStore.set((s) => ({ focus: "folders", panel: { kind: "project", index }, interacted: true, camTick: s.camTick + 1 }));
   },
   openPc(tab: PcTab = "skills") {
-    deskStore.set({ focus: "pc", panel: { kind: "pc", tab }, interacted: true });
+    deskStore.set((s) => ({ focus: "pc", panel: { kind: "pc", tab }, interacted: true, camTick: s.camTick + 1 }));
   },
   closePanel() {
     deskStore.set({ panel: null });
   },
   reset() {
-    deskStore.set({ focus: "overview", panel: null, interacted: true });
+    deskStore.set((s) => ({ focus: "overview", panel: null, interacted: true, camTick: s.camTick + 1 }));
+  },
+  openShelf() {
+    deskStore.set((s) => ({ focus: "shelf", panel: null, interacted: true, camTick: s.camTick + 1 }));
   },
   openContact() {
-    deskStore.set({ focus: "overview", panel: { kind: "contact" }, interacted: true });
+    deskStore.set((s) => ({ focus: "overview", panel: { kind: "contact" }, interacted: true, camTick: s.camTick + 1 }));
   },
   toggleMusic() {
     deskStore.set((s) => ({ music: !s.music, interacted: true }));

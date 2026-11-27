@@ -14,6 +14,8 @@ import Lamp from "./objects/Lamp";
 import Monitor, { SCREEN } from "./objects/Monitor";
 import PcTower from "./objects/PcTower";
 import Room from "./objects/Room";
+import Walls from "./objects/Walls";
+import Figures from "./objects/Figures";
 import { deskStore, useDesk, type Focus } from "./store";
 
 export type SceneLabels = {
@@ -39,9 +41,10 @@ export type SceneLabels = {
 type Shot = { pos: [number, number, number]; target: [number, number, number] };
 
 const SHOTS: Record<Exclude<Focus, "monitor">, Shot> = {
-  overview: { pos: [0.3, 1.55, 3.25], target: [0, 0.42, -0.15] },
+  overview: { pos: [0.3, 1.7, 3.75], target: [0, 0.6, -0.2] },
   folders: { pos: [-0.35, 1.35, 2.1], target: [-1.0, 0.22, -0.2] },
   pc: { pos: [0.25, 1.25, 2.2], target: [1.25, 0.45, -0.3] },
+  shelf: { pos: [0.95, 1.3, 0.55], target: [1.15, 1.2, -1.15] },
 };
 
 const UP = new Vector3(0, 1, 0);
@@ -52,6 +55,7 @@ function CameraRig() {
   const controls = useThree((s) => s.controls) as OrbitControlsImpl | null;
   const focus = useDesk((s) => s.focus);
   const panelOpen = useDesk((s) => s.panel !== null);
+  const camTick = useDesk((s) => s.camTick);
   const goal = useMemo(() => ({ pos: new Vector3(), target: new Vector3() }), []);
   const animating = useRef(true);
   const first = useRef(true);
@@ -95,7 +99,7 @@ function CameraRig() {
       if (deskStore.get().reducedMotion) camera.position.copy(goal.pos);
     }
     animating.current = true;
-  }, [focus, panelOpen, size.width, size.height, goal, camera]);
+  }, [focus, panelOpen, camTick, size.width, size.height, goal, camera]);
 
   useEffect(() => {
     if (!controls) return;
@@ -164,6 +168,8 @@ export default function Scene({ content, labels }: { content: Content; labels: S
       />
 
       <Room switchLabel={labels.lightSwitch} />
+      <Walls />
+      <Figures />
       <Monitor
         label={labels.monitor}
         notes={{
