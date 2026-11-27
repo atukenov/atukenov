@@ -93,8 +93,8 @@ function Hud({ onClassic }: { onClassic: () => void }) {
       <div className="flex gap-1.5 overflow-x-auto max-w-full pb-1">
         <HudButton tone="yellow" onClick={() => deskActions.openMonitor(compact())} label={t("desk.about")} icon={<FiMonitor />} active={s.focus === "monitor"} />
         <HudButton tone="yellow" onClick={() => deskActions.openProject(0)} label={t("desk.projects")} icon={<FiFolder />} active={s.panel?.kind === "project"} />
-        <HudButton tone="yellow" onClick={() => deskActions.openPc("skills")} label={t("desk.skills")} icon={<FiCpu />} active={s.panel?.kind === "pc"} />
-        <HudButton tone="yellow" onClick={() => deskActions.openPc("experience")} label={t("Experience")} icon={<FiBriefcase />} />
+        <HudButton tone="yellow" onClick={() => deskActions.openPc("skills")} label={t("desk.skills")} icon={<FiCpu />} active={s.panel?.kind === "pc" && s.panel.tab !== "experience"} />
+        <HudButton tone="yellow" onClick={() => deskActions.openPc("experience")} label={t("Experience")} icon={<FiBriefcase />} active={s.panel?.kind === "pc" && s.panel.tab === "experience"} />
         <HudButton tone="yellow" onClick={deskActions.openContact} label={t("contact")} icon={<FiPhone />} active={s.panel?.kind === "contact"} />
         <span className="w-px bg-white/15 mx-1 shrink-0" />
         <HudButton onClick={deskActions.togglePower} label={t("desk.power")} icon={<FiPower />} active={s.power !== "off"} />

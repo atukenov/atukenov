@@ -150,7 +150,8 @@ export function DeskCalendar({ label, items }: { label: string; items: Experienc
   return (
     <group position={[-0.56, 0, -0.17]} rotation-y={0.18} {...hot}>
       {/* tent stand */}
-      <mesh position={[0, H / 2 - 0.005, -0.04]} rotation-x={-0.35}>
+      {/* leans back from the top edge, so it never crosses the front page */}
+      <mesh position={[0, H / 2 - 0.005, -Math.sin(0.35) * (H / 2)]} rotation-x={0.35}>
         <boxGeometry args={[W, H, 0.006]} />
         <meshStandardMaterial color="#17171f" />
       </mesh>
@@ -161,7 +162,7 @@ export function DeskCalendar({ label, items }: { label: string; items: Experienc
           <meshStandardMaterial color="#9a9ab0" metalness={0.9} roughness={0.2} />
         </mesh>
       ))}
-      <group position={[0, H - 0.005, 0]} rotation-x={0.35}>
+      <group position={[0, H - 0.005, 0]} rotation-x={-0.35}>
         <group ref={flip}>
           <group position={[0, -H / 2, 0]}>
             <mesh>
@@ -199,7 +200,7 @@ export function DeskCalendar({ label, items }: { label: string; items: Experienc
             >
               {item.position}
             </Text>
-            <Text font={FONT} fontSize={0.01} position={[0, -H / 2 + 0.018, 0.003]} anchorX="center" color="#8a8aa0">
+            <Text font={FONT} fontSize={0.011} position={[0, -H / 2 + 0.018, 0.003]} anchorX="center" color="#4a4a60">
               {`${(shown % items.length) + 1}/${items.length}  click to flip`}
             </Text>
           </group>
