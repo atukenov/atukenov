@@ -404,19 +404,32 @@ function Figure({ spec, x }: { spec: FigureSpec; x: number }) {
 }
 
 /** Two floating shelves on the back wall, lit from underneath. */
-export default function Figures() {
+const X0 = 0.35;
+const W = 1.6;
+const Z = WALL.back + 0.11;
+const ROW_Y = [1.03, 1.39];
+
+/** Where the camera frames when the visitor clicks the shelf. */
+export const SHELF_BOX = {
+  x: X0 + W / 2,
+  y: (ROW_Y[0] + ROW_Y[1] + 0.26) / 2,
+  z: Z,
+  w: W + 0.2,
+  h: ROW_Y[1] + 0.3 - ROW_Y[0] + 0.06,
+};
+
+export default function Figures({ label }: { label: string }) {
   const shelves = [FIGURES.slice(0, 6), FIGURES.slice(6)];
-  const X0 = 0.35;
-  const W = 1.6;
-  const Z = WALL.back + 0.11;
+  const open = useCallback(() => deskActions.openShelf(), []);
+  const hot = useHotspot(label, open);
   return (
     <group>
       {shelves.map((figs, row) => {
-        const y = 1.03 + row * 0.36;
+        const y = ROW_Y[row];
         const step = W / 6;
         return (
           <group key={row} position={[X0 + W / 2, y, Z]}>
-            <RoundedBox args={[W + 0.06, 0.03, 0.2]} radius={0.008} smoothness={2} castShadow receiveShadow>
+            <RoundedBox args={[W + 0.06, 0.03, 0.2]} radius={0.008} smoothness={2} castShadow receiveShadow {...hot}>
               <meshStandardMaterial color="#1a1420" metalness={0.3} roughness={0.5} />
             </RoundedBox>
             {/* underglow strip */}

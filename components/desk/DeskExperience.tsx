@@ -132,6 +132,7 @@ export default function DeskExperience({ onClassic }: { onClassic: () => void })
       calendar: t("desk.label.calendar"),
       headphones: t("desk.label.headphones"),
       ball: t("desk.label.ball"),
+      shelf: t("desk.label.shelf"),
       freelance: t("desk.label.freelance"),
       freelanceNote: t("desk.note.freelance"),
       hobbies: t("desk.label.hobbies"),

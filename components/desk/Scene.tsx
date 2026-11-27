@@ -15,7 +15,7 @@ import Monitor, { SCREEN } from "./objects/Monitor";
 import PcTower from "./objects/PcTower";
 import Room from "./objects/Room";
 import Walls from "./objects/Walls";
-import Figures from "./objects/Figures";
+import Figures, { SHELF_BOX } from "./objects/Figures";
 import { deskStore, useDesk, type Focus } from "./store";
 
 export type SceneLabels = {
@@ -32,6 +32,7 @@ export type SceneLabels = {
   calendar: string;
   headphones: string;
   ball: string;
+  shelf: string;
   freelance: string;
   freelanceNote: string;
   hobbies: string;
@@ -40,11 +41,10 @@ export type SceneLabels = {
 
 type Shot = { pos: [number, number, number]; target: [number, number, number] };
 
-const SHOTS: Record<Exclude<Focus, "monitor">, Shot> = {
+const SHOTS: Record<Exclude<Focus, "monitor" | "shelf">, Shot> = {
   overview: { pos: [0.3, 1.7, 3.75], target: [0, 0.6, -0.2] },
   folders: { pos: [-0.35, 1.35, 2.1], target: [-1.0, 0.22, -0.2] },
   pc: { pos: [0.25, 1.25, 2.2], target: [1.25, 0.45, -0.3] },
-  shelf: { pos: [0.95, 1.3, 0.55], target: [1.15, 1.2, -1.15] },
 };
 
 const UP = new Vector3(0, 1, 0);
@@ -71,6 +71,15 @@ function CameraRig() {
       goal.target.set(x, y, z);
       goal.target.y -= 0.03;
       goal.pos.set(x, y, z + Math.max(fitH, fitW));
+    } else if (focus === "shelf") {
+      // frame just the two shelves: fit their width/height, look straight on
+      const { x, y, z, w, h } = SHELF_BOX;
+      const fitH = h / 2 / Math.tan(fovY / 2) / 0.72;
+      const fitW = w / 2 / (Math.tan(fovY / 2) * aspect);
+      const d = Math.min(Math.max(fitH, fitW), 2.6);
+      goal.target.set(x, y, z);
+      // a touch above, so the line of sight clears the monitor and PC
+      goal.pos.set(x, y + 0.12 + Math.max(0, d - 1.6) * 0.25, z + d);
     } else {
       const shot = SHOTS[focus];
       goal.target.set(...shot.target);
@@ -169,7 +178,7 @@ export default function Scene({ content, labels }: { content: Content; labels: S
 
       <Room switchLabel={labels.lightSwitch} />
       <Walls />
-      <Figures />
+      <Figures label={labels.shelf} />
       <Monitor
         label={labels.monitor}
         notes={{
