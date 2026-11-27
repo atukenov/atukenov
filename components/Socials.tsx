@@ -11,7 +11,7 @@ interface Props {
   iconStyles: string;
 }
 
-const socials = [
+export const socials = [
   { icon: <FaGithub />, label: "GitHub", path: "https://github.com/atukenov" },
   {
     icon: <FaLinkedin />,

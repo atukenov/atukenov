@@ -235,3 +235,27 @@
 .crt-vignette {
   background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
 }
+
+/* ------------------------------------------------------------------
+   3D desk home page (components/desk). The canvas is fixed full-screen,
+   so the header floats above it and the status bar pins to the bottom.
+------------------------------------------------------------------- */
+html.desk-mode body {
+  overflow: hidden;
+}
+html.desk-mode header {
+  z-index: 50;
+}
+@media (max-width: 767px) {
+  html.desk-mode footer {
+    display: none;
+  }
+}
+html.desk-mode footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-top: 0;
+  z-index: 35;
+}
