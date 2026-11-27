@@ -1,30 +1,6 @@
 "use client";
 
-import {
-  FaAngular,
-  FaCss3,
-  FaFigma,
-  FaHtml5,
-  FaJs,
-  FaNodeJs,
-  FaReact,
-} from "react-icons/fa";
-
-import {
-  SiAdobeillustrator,
-  SiAdobephotoshop,
-  SiAzuredevops,
-  SiBootstrap,
-  SiCsharp,
-  SiDotnet,
-  SiGit,
-  SiMongodb,
-  SiMysql,
-  SiNextdotjs,
-  SiPython,
-  SiTailwindcss,
-} from "react-icons/si";
-
+import { skillList } from "@/lib/skills";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -37,28 +13,6 @@ import { getContent } from "@/lib/content";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-// Technology names are proper nouns — not localized.
-const skillList = [
-  { icon: <FaHtml5 />, name: "html 5" },
-  { icon: <FaCss3 />, name: "CSS3" },
-  { icon: <FaJs />, name: "JS" },
-  { icon: <FaReact />, name: "ReactJS" },
-  { icon: <SiNextdotjs />, name: "next.js" },
-  { icon: <SiTailwindcss />, name: "tailwind" },
-  { icon: <FaNodeJs />, name: "node.js" },
-  { icon: <FaAngular />, name: "angular" },
-  { icon: <SiDotnet />, name: ".net" },
-  { icon: <SiCsharp />, name: "c#" },
-  { icon: <SiMysql />, name: "mysql" },
-  { icon: <SiMongodb />, name: "mongodb" },
-  { icon: <SiPython />, name: "python" },
-  { icon: <SiGit />, name: "git" },
-  { icon: <SiBootstrap />, name: "bootstrap" },
-  { icon: <SiAzuredevops />, name: "azure" },
-  { icon: <FaFigma />, name: "figma" },
-  { icon: <SiAdobephotoshop />, name: "Photoshop" },
-  { icon: <SiAdobeillustrator />, name: "Illustrator" },
-];
 
 const Resume = () => {
   const { t, i18n } = useTranslation("common");
