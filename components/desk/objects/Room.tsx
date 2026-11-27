@@ -1,13 +1,13 @@
 "use client";
 
-import { RoundedBox, Text } from "@react-three/drei";
+import { RoundedBox } from "@react-three/drei";
 import { useCallback } from "react";
 import { deskActions, useDesk } from "../store";
-import { FONT, NEON, useHotspot } from "./common";
+import { NEON, useHotspot } from "./common";
 
 export const DESK = { width: 3.4, depth: 1.5, top: 0, floor: -1.45, z: -0.1 };
 
-/** Desk, floor, back wall, neon sign and the room light switch. */
+/** Desk, floor and the room light switch (walls live in Walls.tsx). */
 export default function Room({ switchLabel }: { switchLabel: string }) {
   const roomLights = useDesk((s) => s.roomLights);
   const onSwitch = useCallback(() => deskActions.toggleRoomLights(), []);
@@ -24,42 +24,6 @@ export default function Room({ switchLabel }: { switchLabel: string }) {
         <planeGeometry args={[14, 10]} />
         <meshStandardMaterial color="#0b0b14" roughness={0.85} />
       </mesh>
-
-      {/* back wall with a faint grid */}
-      <mesh position={[0, 1, -1.25]} receiveShadow>
-        <planeGeometry args={[14, 6]} />
-        <meshStandardMaterial color="#10101c" roughness={0.95} />
-      </mesh>
-      <gridHelper
-        args={[14, 56, "#1c2c3a", "#141c28"]}
-        rotation-x={Math.PI / 2}
-        position={[0, 1, -1.24]}
-      />
-
-      {/* neon sign */}
-      <group position={[1.4, 1.24, -1.2]}>
-        <Text
-          font={FONT}
-          fontSize={0.15}
-          letterSpacing={0.08}
-          anchorX="center"
-          anchorY="middle"
-        >
-          {"<AMAKENZI />"}
-          <meshBasicMaterial color={NEON.yellow} toneMapped={false} />
-        </Text>
-        <Text
-          font={FONT}
-          fontSize={0.055}
-          letterSpacing={0.4}
-          position={[0, -0.15, 0]}
-          anchorX="center"
-        >
-          FULL-STACK // ATYRAU.KZ
-          <meshBasicMaterial color={NEON.cyan} toneMapped={false} />
-        </Text>
-        <pointLight color={NEON.yellow} intensity={1.4} distance={3} decay={2} position={[0, 0, 0.3]} />
-      </group>
 
       {/* desk top */}
       <RoundedBox

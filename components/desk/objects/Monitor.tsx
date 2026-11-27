@@ -2,7 +2,7 @@
 
 import { Html, RoundedBox, Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { CanvasTexture, SRGBColorSpace, type Group, type PointLight } from "three";
 import MonitorScreen, { SCREEN_PX } from "../MonitorScreen";
 import { deskActions, deskStore, useDesk } from "../store";
@@ -139,7 +139,23 @@ export default function Monitor({
   });
 
   const [cx, cy, cz] = SCREEN.center;
-  const liveScreen = focus === "overview" || focus === "monitor";
+  // The live DOM screen always draws on top of the 3D scene, so it is only
+  // shown while the camera looks at the monitor from the front. From a
+  // side angle (where the PC or lamp could stand in front of it) the
+  // painted texture is used instead, which is depth-tested like the rest.
+  const [frontal, setFrontal] = useState(true);
+  const frontalRef = useRef(true);
+  useFrame(({ camera }) => {
+    const dx = camera.position.x - cx;
+    const dz = camera.position.z - cz;
+    const angle = Math.abs(Math.atan2(dx, dz));
+    const next = frontalRef.current ? angle < 0.42 : angle < 0.36; // hysteresis
+    if (next !== frontalRef.current) {
+      frontalRef.current = next;
+      setFrontal(next);
+    }
+  });
+  const liveScreen = frontal && (focus === "overview" || focus === "monitor");
   const screenshot = useScreenTexture();
 
   return (
